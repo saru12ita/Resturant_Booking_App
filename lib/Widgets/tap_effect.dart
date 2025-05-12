@@ -59,45 +59,52 @@ class _TapEffectState extends State<TapEffect>
       final int tapDuration =
           DateTime.now().millisecondsSinceEpoch -
           taptime.millisecondsSinceEpoch;
-          if(tapDuration <120){
-            await Future<dynamic>.delayed(Duration(milliseconds: 200));
-          }
+      if (tapDuration < 120) {
+        await Future<dynamic>.delayed(Duration(milliseconds: 200));
+      }
     }
   }
 
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async{
-        if(widget.isClickable){
+      onTap: () async {
+        if (widget.isClickable) {
           await Future<dynamic>.delayed(Duration(milliseconds: 200));
-          try{
-            if(!isProgress){
+          try {
+            if (!isProgress) {
               widget.onClick!();
-              isProgress=true;
+              isProgress = true;
             }
-          }
-          catch(_){}
+          } catch (_) {}
         }
       },
-      onTapDown:(TapDownDetails details) {
-        if(widget.isClickable){
-          taptime =DateTime.now();
+      onTapDown: (TapDownDetails details) {
+        if (widget.isClickable) {
+          taptime = DateTime.now();
           animationController!.animateTo(
-        1.0,
-        duration: Duration(milliseconds: 240),
-        curve: Curves.fastOutSlowIn,
-      );
-       }
-      isProgress= true;
-       
+            1.0,
+            duration: Duration(milliseconds: 240),
+            curve: Curves.fastOutSlowIn,
+          );
+        }
+        isProgress = true;
       },
-      onTapUp: (TapUpDetails details){
-        onTapCancel();
-      },onTapCancel: (){
+      onTapUp: (TapUpDetails details) {
         onTapCancel();
       },
-      child: ,
+      onTapCancel: () {
+        onTapCancel();
+      },
+      child: AnimatedBuilder(
+        animation: animationController!,
+        builder: (BuildContext context, Widget? child) {
+          return Transform.scale(
+            scale:animationController!.value,
+            origin: Offset(0.0, 0.0),
+            child: widget.child,
+          );
+        },
+      ),
     );
   }
-
 }

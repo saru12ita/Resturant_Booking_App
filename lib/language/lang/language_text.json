@@ -1,11 +1,11 @@
 [
-   {
-    "text_id": "best_resturant_deals",
-    "en": "Best restaurant deals for you",
-    "fr": "Meilleures offres de restaurants pour vos vacances",
-    "ar": "أفضل عروض المطاعم لقضاء عطلتك",
-    "ja": "あなたの休日のための最高のレストランのお得な情報"
-},
+    {
+        "text_id": "best_resturant_deals",
+        "en": "Best restaurant deals for you",
+        "fr": "Meilleures offres de restaurants pour vos vacances",
+        "ar": "أفضل عروض المطاعم لقضاء عطلتك",
+        "ja": "あなたの休日のための最高のレストランのお得な情報"
+    },
     {
         "text_id": "already_have_account",
         "en": "Already have account? Log in",
@@ -21,11 +21,11 @@
         "ja": "始めましょう"
     },
     {
-        "text_id": "plan_your_trips",
-        "en": "Plan your trips",
-        "fr": "Planifiez vos voyages",
-        "ar": "خطط لرحلاتك",
-        "ja": "あなたの旅行を計画する"
+        "text_id": "plan_your_orders",
+        "en": "Plan your perfect restaurant outing",
+        "fr": "Planifiez votre sortie au restaurant parfaite",
+        "ar": "خطط لنزهتك المثالية في المطعم",
+        "ja": "完璧なレストランでの外出を計画しましょう"
     },
     {
         "text_id": "book_one_of_your",
@@ -36,10 +36,10 @@
     },
     {
         "text_id": "find_best_deals",
-        "en": "Find best deals",
-        "fr": "Trouvez les meilleures offres",
-        "ar": "البحث عن أفضل الصفقات",
-        "ja": "最高のお得な情報を見つける"
+        "en": "Discover the best restaurant deals",
+        "fr": "Découvrez les meilleures offres de restaurants",
+        "ar": "اكتشف أفضل عروض المطاعم",
+        "ja": "最高のレストランのお得な情報を見つけよう"
     },
     {
         "text_id": "find_deals_for_any",
@@ -49,11 +49,11 @@
         "ja": "居心地の良いカントリーハウスからシティ\nフラットまで、あらゆる季節のお得な情報を探す"
     },
     {
-        "text_id": "best_travelling_all_time",
-        "en": "Best travelling all time",
-        "fr": "Meilleur voyage de tous les temps",
-        "ar": "أفضل السفر طوال الوقت",
-        "ja": "常に最高の旅行"
+        "text_id": "best_dining_experience",
+        "en": "Best dining experience anytime",
+        "fr": "La meilleure expérience culinaire à tout moment",
+        "ar": "أفضل تجربة طعام في أي وقت",
+        "ja": "いつでも最高の食事体験を"
     },
     {
         "text_id": "login",

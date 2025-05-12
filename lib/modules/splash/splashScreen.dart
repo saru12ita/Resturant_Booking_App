@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:resturant_reservation/Widgets/common_button.dart';
 import 'package:resturant_reservation/language/appLocalizations.dart';
 import 'package:resturant_reservation/providers/theme_provider.dart';
+import 'package:resturant_reservation/routes/routes_names.dart';
 import 'package:resturant_reservation/utils/localfiles.dart';
 import 'package:resturant_reservation/utils/text_styles.dart';
+import 'package:resturant_reservation/utils/themes.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -88,14 +91,44 @@ class _SplashscreenState extends State<Splashscreen> {
                   child: Text(
                     AppLocalizations(context).of("best_resturant_deals"),
                     textAlign: TextAlign.left,
-                    style: TextStyles(context).getRegularStyle().copyWith(fontSize: 15),
+                    style: TextStyles(context).getRegularStyle().copyWith(),
                   ),
                 ),
                 Expanded(flex: 4, child: SizedBox()),
                 AnimatedOpacity(
                   opacity: isLoadText ? 1.0 : 0.0,
-                  duration: Duration(milliseconds: 420),
-                  child: SizedBox(),
+                  duration: Duration(milliseconds: 680),
+                  child: CommonButton(
+                    padding:const  EdgeInsets.only(
+                      left: 48,
+                      right: 48,
+                      top: 8,
+                      bottom: 8,
+                    ),
+                    buttonText: AppLocalizations(context).of("get_started"),
+                    onTap: (){
+                     NavigationServices(context).goToIntroductionScreen();
+                    },
+                  ),
+                ),
+
+                AnimatedOpacity(
+                  opacity: isLoadText ? 1.0 : 0.0,
+                  duration: Duration(milliseconds: 680),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      bottom: 24.0 + MediaQuery.of(context).padding.bottom,
+                      top: 16,
+                    ),
+
+                    child: Text(
+                      AppLocalizations(context).of("already_have_account"),
+                      textAlign: TextAlign.left,
+                      style: TextStyles(context).getRegularStyle().copyWith(
+                        color: AppTheme.whiteColor,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:resturant_reservation/common/common.dart';
 import 'package:resturant_reservation/language/appLocalizations.dart';
+import 'package:resturant_reservation/modules/splash/introductionscreen.dart';
 import 'package:resturant_reservation/modules/splash/splashScreen.dart';
 import 'package:resturant_reservation/providers/theme_provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -84,7 +85,7 @@ class _MotelAppState extends State<MotelApp> {
   Map<String, WidgetBuilder> _buildRoutes() {
  return{
   RoutesName.Splash:(BuildContext context) => Splashscreen(),
-  
+  RoutesName.IntroductionScreen:(BuildContext context) => IntroductionScreen(),
  };
   }
 

@@ -27,4 +27,12 @@ class NavigationServices {
   );
 }
 
+void goToIntroductionScreen() {
+  Navigator.pushNamedAndRemoveUntil(
+    context,
+    RoutesName.IntroductionScreen,
+    (Route<dynamic> route) => false,
+  );
+}
+
 }
