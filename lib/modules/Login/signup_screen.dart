@@ -6,20 +6,28 @@ import 'package:resturant_reservation/Widgets/remove_focuse.dart';
 import 'package:resturant_reservation/language/appLocalizations.dart';
 import 'package:resturant_reservation/modules/Login/facebook_twitter_button_view.dart';
 import 'package:resturant_reservation/routes/routes_names.dart';
+import 'package:resturant_reservation/utils/text_styles.dart';
+import 'package:resturant_reservation/utils/themes.dart';
 import 'package:resturant_reservation/utils/validator.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   String _errorEmail = '';
   TextEditingController _emailController = TextEditingController();
   String _errorPassword = '';
   TextEditingController _passwordController = TextEditingController();
+
+  String _errorFName = '';
+  TextEditingController _fnameController = TextEditingController();
+  String _errorLName = '';
+  TextEditingController _lnameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             CommonAppBarView(
               iconData: Icons.arrow_back_ios_new,
-              titleText: AppLocalizations(context).of("login"),
+              titleText: AppLocalizations(context).of("sign_up"),
               onBackClick: () {
                 Navigator.pop(context);
               },
@@ -64,10 +72,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     CommonTextFieldView(
+                      controller: _fnameController,
+                      errorText: _errorFName,
+                      titleText: AppLocalizations(context).of("first_name"),
+                      padding: EdgeInsets.only(left: 24, right: 24),
+                      hintText: AppLocalizations(
+                        context,
+                      ).of("enter_first_name"),
+                      keyboardType: TextInputType.name,
+                      onChanged: (String txt) {},
+                    ),
+
+                    CommonTextFieldView(
+                      controller: _lnameController,
+                      errorText: _errorLName,
+                      titleText: AppLocalizations(context).of("last_name"),
+                      padding: EdgeInsets.only(left: 24, right: 24, bottom: 15),
+                      hintText: AppLocalizations(context).of("enter_last_name"),
+                      onChanged: (String txt) {},
+                      keyboardType: TextInputType.name,
+                      isObsecureText: true,
+                    ),
+                    CommonTextFieldView(
                       controller: _emailController,
                       errorText: _errorEmail,
                       titleText: AppLocalizations(context).of("your_mail"),
-                      padding: EdgeInsets.only(left: 24, right: 24),
+                      padding: EdgeInsets.only(left: 24, right: 24,bottom: 15,),
                       hintText: AppLocalizations(
                         context,
                       ).of("enter_your_email"),
@@ -79,21 +109,61 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _passwordController,
                       errorText: _errorPassword,
                       titleText: AppLocalizations(context).of("password"),
-                      padding: EdgeInsets.only(left: 24, right: 24),
+                      padding: EdgeInsets.only(left: 24, right: 24, bottom: 24),
                       hintText: AppLocalizations(context).of("enter_password"),
                       onChanged: (String txt) {},
                       keyboardType: TextInputType.text,
                       isObsecureText: true,
                     ),
-
-                    _forgotYourPasswordUI(),
                     CommonButton(
                       padding: EdgeInsets.only(left: 24, right: 24, bottom: 16),
-                      buttonText: AppLocalizations(context).of('login'),
-                      onTap: () {
+                      buttonText: AppLocalizations(context).of('sign_up'),
+                     onTap: () {
                         if (allValidation()) Scaffold();
                       },
                     ),
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        AppLocalizations(context).of("terms_agreed"),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).disabledColor,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppLocalizations(context).of("already_have_account"),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Theme.of(context).disabledColor,
+                          ),
+                        ),
+                        InkWell(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          onTap: () {
+                            NavigationServices(context).gotoLoginScreen();
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: Text(AppLocalizations(context).of("login"),
+                            style:TextStyles(context).getRegularStyle().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.primaryColor,
+                            ) ,),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height:MediaQuery.of(context).padding.bottom+24,)
                   ],
                 ),
               ),
@@ -102,39 +172,34 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  
   }
-
-  _forgotYourPasswordUI() {
-    return Padding(
-      padding: EdgeInsets.only(top: 8, right: 16, bottom: 8, left: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          InkWell(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-            onTap: () {
-              NavigationServices(context).gotoForgotPasswordScreen();
-            },
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(
-                AppLocalizations(context).of("forgot_your_Password"),
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).disabledColor,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
+  
   bool allValidation() {
     bool isValid = true;
+
+
+  if (_fnameController.text.trim().isEmpty) {
+      _errorFName = AppLocalizations(context).of('first_name_cannot_empty');
+      isValid = false;
+    } 
+     else {
+      _errorFName = '';
+    }
+
+
+if (_lnameController.text.trim().isEmpty) {
+      _errorLName = AppLocalizations(context).of('last_name_cannot_empty');
+      isValid = false;
+    } 
+     else {
+      _errorLName = '';
+    }
+
+
+
+
+
     if (_emailController.text.trim().isEmpty) {
       _errorEmail = AppLocalizations(context).of('email_cannot_empty');
       isValid = false;

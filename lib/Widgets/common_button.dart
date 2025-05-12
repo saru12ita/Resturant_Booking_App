@@ -1,5 +1,5 @@
 
-/*
+
 
 import 'package:flutter/material.dart';
 import 'package:resturant_reservation/Widgets/tap_effect.dart';
@@ -60,8 +60,10 @@ class CommonButton extends StatelessWidget {
   }
 }
 
-*/
 
+
+
+/*
 import 'package:flutter/material.dart';
 import 'package:resturant_reservation/Widgets/tap_effect.dart';
 import 'package:resturant_reservation/utils/text_styles.dart';
@@ -123,3 +125,5 @@ class CommonButton extends StatelessWidget {
     );
   }
 }
+
+*/

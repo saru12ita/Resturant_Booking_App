@@ -133,7 +133,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             backgroundColor: AppTheme.backgroundColor,
             textColor: AppTheme.primaryTextColor,
             buttonText: AppLocalizations(context).of("create_account"),
-            onTap: () {},
+            onTap: () {
+              NavigationServices(context).gotoSignUpScreen();
+            },
           ),
           SizedBox(height: MediaQuery.of(context).padding.bottom),
         ],

@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:resturant_reservation/modules/Login/forgot_password.dart';
 import 'package:resturant_reservation/modules/Login/login_Screen.dart';
+import 'package:resturant_reservation/modules/Login/signup_screen.dart';
 import 'package:resturant_reservation/routes/routes.dart';
 
 class NavigationServices {
@@ -40,5 +42,12 @@ Future<dynamic> gotoLoginScreen() async{
   return await _pushMaterialPageRoute(LoginScreen());
 }
 
+Future<dynamic> gotoForgotPasswordScreen() async{
+  return await _pushMaterialPageRoute(ForgotPassword());
+}
+
+Future<dynamic> gotoSignUpScreen() async{
+  return await _pushMaterialPageRoute(SignUpScreen());
+}
 
 }
