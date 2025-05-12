@@ -1,3 +1,6 @@
+/*
+
+
 import 'package:flutter/material.dart';
 
 class TapEffect extends StatefulWidget {
@@ -104,6 +107,75 @@ class _TapEffectState extends State<TapEffect>
             child: widget.child,
           );
         },
+      ),
+    );
+  }
+}
+
+*/
+
+
+import 'package:flutter/material.dart';
+
+/// A widget that applies a scaling "tap" animation effect to its child.
+/// Ideal for buttons and clickable elements to provide a smooth user interaction.
+class TapEffect extends StatefulWidget {
+  final bool isClickable;
+  final VoidCallback? onClick;
+  final Widget child;
+
+  const TapEffect({
+    Key? key,
+    this.isClickable = true,
+    this.onClick,
+    required this.child,
+  }) : super(key: key);
+
+  @override
+  _TapEffectState createState() => _TapEffectState();
+}
+
+class _TapEffectState extends State<TapEffect>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 100),
+      lowerBound: 0.95,
+      upperBound: 1.0,
+    )..value = 1.0;
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleTap() async {
+    if (!widget.isClickable || widget.onClick == null) return;
+
+    try {
+      await _animationController.reverse();
+      await _animationController.forward();
+      widget.onClick!();
+    } catch (e) {
+      debugPrint("TapEffect Error: $e");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _handleTap,
+      behavior: HitTestBehavior.translucent,
+      child: ScaleTransition(
+        scale: _animationController,
+        child: widget.child,
       ),
     );
   }

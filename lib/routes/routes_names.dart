@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:resturant_reservation/modules/Login/login_Screen.dart';
 import 'package:resturant_reservation/routes/routes.dart';
 
 class NavigationServices {
@@ -34,5 +35,10 @@ void goToIntroductionScreen() {
     (Route<dynamic> route) => false,
   );
 }
+
+Future<dynamic> gotoLoginScreen() async{
+  return await _pushMaterialPageRoute(LoginScreen());
+}
+
 
 }
