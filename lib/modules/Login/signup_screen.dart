@@ -120,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       buttonText: AppLocalizations(context).of('sign_up'),
                       onTap: () {
                         if (allValidation())
-                          NavigationServices(context).gotoBottomTabScreenn();
+                          NavigationServices(context).gotoBottomTabScreen();
                       },
                     ),
                     Padding(

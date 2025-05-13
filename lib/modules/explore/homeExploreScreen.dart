@@ -11,6 +11,10 @@ class HomeExploreScreen extends StatefulWidget {
 class _HomeExploreScreenState extends State<HomeExploreScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Center(
+        child: Text("Hotel Explorer"),
+      ),
+    );
   }
 }

@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       buttonText: AppLocalizations(context).of('login'),
                       onTap: () {
                         if (allValidation())
-                          NavigationServices(context).gotoBottomTabScreenn();
+                          NavigationServices(context).gotoBottomTabScreen();
                       },
                     ),
                   ],

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:resturant_reservation/BusinessDashBoard/productDetails.dart';
 import 'package:resturant_reservation/modules/Login/forgot_password.dart';
 import 'package:resturant_reservation/modules/Login/login_Screen.dart';
 import 'package:resturant_reservation/modules/Login/signup_screen.dart';
@@ -51,7 +52,14 @@ Future<dynamic> gotoSignUpScreen() async{
   return await _pushMaterialPageRoute(SignUpScreen());
 }
 
-Future<dynamic> gotoBottomTabScreenn() async{
+Future<dynamic> gotoBottomTabScreen() async{
   return await _pushMaterialPageRoute(BottomTabScreen());
 }
+
+Future<dynamic> gotoProductDetailsTabScreen() async{
+  return await _pushMaterialPageRoute(ProductDetailsReportScreen());
+}
+
+
+
 }

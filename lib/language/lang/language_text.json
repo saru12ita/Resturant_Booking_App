@@ -147,12 +147,13 @@
         "ja": "見る"
     },
     {
-        "text_id": "trips",
-        "en": "Trips",
-        "fr": "voyages",
-        "ar": "رحلات",
-        "ja": "旅行"
-    },
+    "text_id": "Reserve",
+    "en": "Reserve",
+    "fr": "Réserver",
+    "ar": "احجز",
+    "ja": "予約する"
+}
+,
     {
         "text_id": "profile",
         "en": "Profile",
@@ -160,6 +161,39 @@
         "ar": "الملف الشخصي",
         "ja": "プロフィール"
     },
+
+
+
+   {
+        "text_id": "dashboard",
+        "en": "Dashboard",
+        "fr": "Tableau de bord",
+        "ar": "لوحة القيادة",
+        "ja": "ダッシュボード"
+    },
+    {
+        "text_id": "reservations",
+        "en": "Reservations",
+        "fr": "Réservations",
+        "ar": "الحجوزات",
+        "ja": "予約"
+    },
+    {
+        "text_id": "analytics",
+        "en": "Analytics",
+        "fr": "Analytique",
+        "ar": "تحليلات",
+        "ja": "分析"
+    },
+    {
+        "text_id": "settings",
+        "en": "Settings",
+        "fr": "Paramètres",
+        "ar": "الإعدادات",
+        "ja": "設定"
+    },
+
+
     {
         "text_id": "where_are_you_going",
         "en": "Where are you going?",

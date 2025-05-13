@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resturant_reservation/utils/themes.dart';
 
 class CommonCard extends StatefulWidget {
   final Color? color;
@@ -13,6 +14,12 @@ class CommonCard extends StatefulWidget {
 class _CommonCardState extends State<CommonCard> {
   @override
   Widget build(BuildContext context) {
-    return Card();
+    return Card(
+      elevation:AppTheme.isLightMode ? 4:0,
+      color:widget.color,
+      shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(widget.radius) ,),
+      child: widget.child,
+      
+    );
   }
 }

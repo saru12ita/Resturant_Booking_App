@@ -1,6 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:resturant_reservation/BusinessDashBoard/BusinessDashboard/Businessdashboard.dart';
 import 'package:resturant_reservation/Widgets/common_card.dart';
 import 'package:resturant_reservation/language/appLocalizations.dart';
 import 'package:resturant_reservation/modules/bottomTab/components/tabButtonUI.dart';
@@ -10,17 +12,17 @@ import 'package:resturant_reservation/modules/profile/profileScreen.dart';
 import 'package:resturant_reservation/providers/theme_provider.dart';
 import 'package:resturant_reservation/utils/themes.dart';
 
-class BottomTabScreen extends StatefulWidget {
-  const BottomTabScreen({super.key});
+class ProductDetailsReportScreen extends StatefulWidget {
+  const ProductDetailsReportScreen({super.key});
 
   @override
-  State<BottomTabScreen> createState() => _BottomTabScreenState();
+  State<ProductDetailsReportScreen> createState() => _ProductDetailsReportScreenState();
 }
 
-class _BottomTabScreenState extends State<BottomTabScreen>
+class _ProductDetailsReportScreenState extends State<ProductDetailsReportScreen>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
-  BottomBarType bottomBarType = BottomBarType.Explore;
+  BottomBarType bottomBarType = BottomBarType.dashboard;
   bool _isFirstTime = true;
   Widget _indexView = Container();
   @override
@@ -41,7 +43,7 @@ class _BottomTabScreenState extends State<BottomTabScreen>
     await Future.delayed(const Duration(milliseconds: 400));
     setState(() {
       _isFirstTime = false;
-      _indexView = HomeExploreScreen(animationController: _animationController);
+      _indexView = DashboardScreen(animationController: _animationController);
       _animationController.forward();
     });
   }
@@ -83,29 +85,38 @@ class _BottomTabScreenState extends State<BottomTabScreen>
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TabButtonUI(
-                icon: Icons.search,
-                isSelected: bottomBarType == BottomBarType.Explore,
-                text: AppLocalizations(context).of("explore"),
+                icon: Icons.dashboard,
+                isSelected: bottomBarType == BottomBarType.dashboard,
+                text: AppLocalizations(context).of("dashboard"),
                 onTap: () {
-                  tapClick(BottomBarType.Explore);
+                  tapClick(BottomBarType.dashboard);
                 },
               ),
               TabButtonUI(
                 icon: FontAwesomeIcons.calendar,
-                isSelected: bottomBarType == BottomBarType.Reservations,
-                text: AppLocalizations(context).of("Reserve"),
+                isSelected: bottomBarType == BottomBarType.reservations,
+                text: AppLocalizations(context).of("reservations"),
                 onTap: () {
-                  tapClick(BottomBarType.Reservations);
+                  tapClick(BottomBarType.reservations);
                 },
               ),
               TabButtonUI(
-                icon: FontAwesomeIcons.user,
-                isSelected: bottomBarType == BottomBarType.profile,
-                text: AppLocalizations(context).of("profile"),
+                icon: FontAwesomeIcons.chartSimple,
+                isSelected: bottomBarType == BottomBarType.analytics,
+                text: AppLocalizations(context).of("analytics"),
                 onTap: () {
-                  tapClick(BottomBarType.profile);
+                  tapClick(BottomBarType.analytics);
                 },
               ),
+              TabButtonUI(
+                icon: FontAwesomeIcons.gear,
+                isSelected: bottomBarType == BottomBarType.settings,
+                text: AppLocalizations(context).of("settings"),
+                onTap: () {
+                  tapClick(BottomBarType.settings);
+                },
+              ),
+              
             ],
           ),
 
@@ -120,28 +131,35 @@ class _BottomTabScreenState extends State<BottomTabScreen>
       bottomBarType = tabType;
       _animationController.reverse().then(
         (value) => {
-          if (tabType == BottomBarType.Explore)
+          if (tabType == BottomBarType.dashboard)
             {
               setState(() {
-                _indexView =HomeExploreScreen(animationController: _animationController);
+                _indexView =DashboardScreen(animationController: _animationController);
               }),
             }
-          else if (tabType == BottomBarType.Reservations)
+          else if (tabType == BottomBarType.reservations)
             {
               setState(() {
                 _indexView =Mybookingscreen(animationController: _animationController);
               }),
             }
-          else if (tabType == BottomBarType.profile)
+          else if (tabType == BottomBarType.analytics)
+            {
+              setState(() {
+                _indexView =profileScreen(animationController: _animationController);
+              }),
+            }
+            else if (tabType == BottomBarType.settings)
             {
               setState(() {
                 _indexView =profileScreen(animationController: _animationController);
               }),
             },
+            
         },
       );
     }
   }
 }
 
-enum BottomBarType { Explore, Reservations, profile }
+enum BottomBarType { dashboard,reservations,analytics,settings }
