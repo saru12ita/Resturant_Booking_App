@@ -91,7 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: EdgeInsets.only(left: 24, right: 24, bottom: 16),
                       buttonText: AppLocalizations(context).of('login'),
                       onTap: () {
-                        if (allValidation()) Scaffold();
+                        if (allValidation())
+                          NavigationServices(context).gotoBottomTabScreenn();
                       },
                     ),
                   ],
@@ -154,9 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       _errorPassword = '';
     }
-    setState(() {
-      
-    });
+    setState(() {});
     return isValid;
   }
 }

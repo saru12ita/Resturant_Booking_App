@@ -97,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _emailController,
                       errorText: _errorEmail,
                       titleText: AppLocalizations(context).of("your_mail"),
-                      padding: EdgeInsets.only(left: 24, right: 24,bottom: 15,),
+                      padding: EdgeInsets.only(left: 24, right: 24, bottom: 15),
                       hintText: AppLocalizations(
                         context,
                       ).of("enter_your_email"),
@@ -118,8 +118,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     CommonButton(
                       padding: EdgeInsets.only(left: 24, right: 24, bottom: 16),
                       buttonText: AppLocalizations(context).of('sign_up'),
-                     onTap: () {
-                        if (allValidation()) Scaffold();
+                      onTap: () {
+                        if (allValidation())
+                          NavigationServices(context).gotoBottomTabScreenn();
                       },
                     ),
                     Padding(
@@ -154,16 +155,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           child: Padding(
                             padding: EdgeInsets.all(4.0),
-                            child: Text(AppLocalizations(context).of("login"),
-                            style:TextStyles(context).getRegularStyle().copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: AppTheme.primaryColor,
-                            ) ,),
+                            child: Text(
+                              AppLocalizations(context).of("login"),
+                              style: TextStyles(
+                                context,
+                              ).getRegularStyle().copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: AppTheme.primaryColor,
+                              ),
+                            ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height:MediaQuery.of(context).padding.bottom+24,)
+                    SizedBox(
+                      height: MediaQuery.of(context).padding.bottom + 24,
+                    ),
                   ],
                 ),
               ),
@@ -172,33 +179,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
-  
   }
-  
+
   bool allValidation() {
     bool isValid = true;
 
-
-  if (_fnameController.text.trim().isEmpty) {
+    if (_fnameController.text.trim().isEmpty) {
       _errorFName = AppLocalizations(context).of('first_name_cannot_empty');
       isValid = false;
-    } 
-     else {
+    } else {
       _errorFName = '';
     }
 
-
-if (_lnameController.text.trim().isEmpty) {
+    if (_lnameController.text.trim().isEmpty) {
       _errorLName = AppLocalizations(context).of('last_name_cannot_empty');
       isValid = false;
-    } 
-     else {
+    } else {
       _errorLName = '';
     }
-
-
-
-
 
     if (_emailController.text.trim().isEmpty) {
       _errorEmail = AppLocalizations(context).of('email_cannot_empty');
@@ -219,9 +217,7 @@ if (_lnameController.text.trim().isEmpty) {
     } else {
       _errorPassword = '';
     }
-    setState(() {
-      
-    });
+    setState(() {});
     return isValid;
   }
 }
